@@ -12,7 +12,7 @@ with st.sidebar:
     
     st.markdown("**Taxonomy & Frameworks**")
     st.selectbox("Active Standard", ["GHG Protocol (2024)", "SBTi Corporate Manual", "ISO 14064"])
-    st.selectbox("Logic Library", ["Enhanced_FM_Scope3_Library.csv", "Standard Spend Proxy"])
+    st.selectbox("Logic Library", ["Scope3_Library.csv", "Standard Spend Proxy"])
     
     st.markdown("**Processing Parameters**")
     st.slider("AI Confidence Threshold", min_value=50, max_value=100, value=85, help="Items below this confidence will be flagged as UNCLEAR.")
@@ -20,11 +20,11 @@ with st.sidebar:
     st.checkbox("Enable Strict Audit Mode", value=True, help="Forces manual review of all managing agent invoices.")
     
     st.markdown("---")
-    st.caption("User ID: Senior ESG Auditor")
+    st.caption("User ID: ESG Consultant")
     st.caption("Deployment: Capstone V2.0")
 
 # --- MAIN DASHBOARD HEADER ---
-st.title("🏢 Facilities Management: Scope 3 Disaggregation Engine")
+st.title("🏢 JATA: Scope 3 Data Preparation Engine")
 st.markdown("Upload multiple managing agent invoices simultaneously to automate entity resolution and extract high-fidelity physical data.")
 
 # --- MULTIPLE FILE INGESTION ---
@@ -139,7 +139,7 @@ if uploaded_files:
             st.markdown("### Semantic Engine Processing Logs")
             st.code("""
 [14:02:01] INGESTION: Read 10 line items from batch upload.
-[14:02:02] LOGIC GATE: Applied 'Enhanced_FM_Scope3_Library.csv'.
+[14:02:02] LOGIC GATE: Applied 'Scope3_Library.csv'.
 [14:02:02] NER MODULE: Detected sub-contractor 'DAIKIN' in row 3. Mapping to Cat 1.
 [14:02:03] EXTRACTION: Isolated '891 kWh' physical metric in row 1. Flagging as Activity-based.
 [14:02:03] FLAG: Reference code 'U-112' detected without explicit vendor. Triggering UNCLEAR status.
@@ -159,4 +159,3 @@ if uploaded_files:
                 mime='text/csv',
                 type="primary"
             )
-            
